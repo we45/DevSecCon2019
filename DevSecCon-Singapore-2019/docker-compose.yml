@@ -1,0 +1,21 @@
+version: "3"
+services:
+  atoz:
+    image: ti1akt/vul-djangorestframework:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - MYSQL_HOST=mysqldb
+    depends_on:
+      - mysqldb
+  mysqldb:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=hegemony86
+      - MYSQL_DATABASE=ecommerce
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+    volumes:
+      - ~/orchy_mysql/:/var/lib/mysql
